@@ -1,4 +1,5 @@
 ---
 - src: geerlingguy.ruby
+- src: franklinkim.environment
 #- src: geerlingguy.nodejs
 #- src: geerlingguy.passenger

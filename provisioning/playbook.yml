@@ -8,17 +8,14 @@
 
   roles:
     - geerlingguy.ruby
-    # Rails needs a JS compiler, we've baked it into
-    # the app
-    # - geerlingguy.nodejs
-    # We don't need passenger as we're using Puma
-    #- geerlingguy.passenger
+    - franklinkim.environment
 
-  environment:
-    DB_USER: "{{ mysql_app_username }}"
-    DB_PASS: "{{ mysql_app_password }}"
-    DB_HOST: localhost
-    DB_PORT: 3306
+  vars:
+    environment_config:
+      DB_USER: "{{ mysql_app_username }}"
+      DB_PASS: "{{ mysql_app_password }}"
+      DB_HOST: localhost
+      DB_PORT: 3306
 
   tasks:
     # Install Rails.

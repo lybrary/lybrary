@@ -2,9 +2,9 @@ default: &default
   adapter: mysql2
   pool: 20
   encoding: utf8
-  username: application
-  password: pa55word
-  host: localhost
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] %>
 
 development:
   <<: *default
