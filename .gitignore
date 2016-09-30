@@ -22,3 +22,6 @@
 
 # Ignore Vagrant environment files.
 /.vagrant
+
+# Ignore all elastic beanstalk configuration files
+.ebextensions
