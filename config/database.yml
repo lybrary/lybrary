@@ -19,4 +19,4 @@ test:
 
 production:
   <<: *default
-  database: images_prod
+  database: <%= ENV['DB_NAME'] %>
