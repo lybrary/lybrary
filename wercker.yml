@@ -22,12 +22,6 @@ build:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - bundle-install
-
-test:
-  steps:
-    #- script:
-    #name: rspec
-    #code: bundle exec rspec
     - script:
       name: rails tests
       code: bundle exec rails test
