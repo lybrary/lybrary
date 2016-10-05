@@ -30,7 +30,7 @@ test:
     #code: bundle exec rspec
     - script:
       name: rails tests
-      code: rails test
+      code: bundle exec rails test
 
 deploy:
   steps:
