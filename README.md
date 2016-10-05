@@ -16,8 +16,9 @@
 
 _**Warning:** some default credentials for MySQL are stored in the Ansible provisioning files. These are not secure and should only be used for development purposes on a secured machine and throwaway VM. Do not use them for production values!_
 
-### Run the server
-* Set the following environment variables to their values for a MySQL database. If you're using Vagrant, this step can be ignored.
+### Run the app
+
+* Set the following environment variables to their values for a MySQL database. If you're using Vagrant, this step can be ignored as a default is already set.
 
 ```
 DB_HOST
