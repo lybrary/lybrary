@@ -22,9 +22,9 @@ build:
   # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - bundle-install
-    - script:
-      name: rails tests
-      code: bundle exec rails test
+    #- script:
+    #  name: rails tests
+    #  code: bundle exec rails test
 
 deploy:
   steps:
