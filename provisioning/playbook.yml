@@ -18,13 +18,12 @@
       DB_PORT: 3306
 
   tasks:
-    # Install Rails.
     - name: Install rails dependencies
       apt: "name={{ item }} state=present"
       with_items:
         - zlib1g-dev
         - libsqlite3-dev
-        - python-mysqldb # Only so we can set the passwords from Ansible
+        - python-mysqldb # So we can set the passwords from Ansible
 
     - command: which rails
       register: rails_result
@@ -64,7 +63,6 @@
         - 127.0.0.1
         - ::1
         - localhost
-        - 10.0.2.2
         - "%"
 
     - name: Add MySQL application user
@@ -78,16 +76,25 @@
         check_implicit_admin: yes
         priv: "*.*:ALL,GRANT"
 
-    # Build demo app.
-    #- name: Check if Rails app exists.
-    #  stat: "path={{ passenger_app_root }}"
-    #  register: rails_app
-    #
-    #- name: Create Rails demo app if it doesn't yet exist.
-    #  shell: "rails new demo chdir=/opt"
-    #  when: rails_app.stat.exists == false
-    #  notify: restart nginx
-    #
+    - name: Copy mysql configuration file (my.cnf)
+      template: src=./templates/my.cnf.j2 dest=/etc/mysql/my.cnf
+      notify:
+        - restart mysql
+
+    - name: Copy the root credentials as .my.cnf file
+      template: src=./templates/root.cnf.j2 dest=~/.my.cnf mode=0600
+
+    - name: Ensure Anonymous user(s) are not in the database
+      mysql_user:
+        name: ""
+        host: "{{ item }}"
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+      with_items:
+        - localhost
+        - "{{ ansible_hostname }}"
+
     #- name: Set correct permissions on app.
     #  file:
     #    path: /vagrant
@@ -96,3 +103,10 @@
     #    state: directory
     #    recurse: yes
     #  notify: restart nginx
+
+  handlers:
+    - name: restart mysql
+      service: name=mysql state=restarted
+
+    - name: restart nginx
+      service: name=nginx state=restarted
