@@ -23,8 +23,12 @@ build:
   steps:
     - bundle-install
     #- script:
-    #  name: rails tests
-    #  code: bundle exec rails test
+    #  name: Setup DB
+    #  code: bundle exec rake db:migrate
+
+    - script:
+      name: rails tests
+      code: bundle exec rails test
 
 deploy:
   steps:
