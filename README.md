@@ -1,5 +1,7 @@
 # Team
 
+[![wercker status](https://app.wercker.com/status/616ceedd54f9bafa1e1529308ba514e9/m/master "wercker status")](https://app.wercker.com/project/byKey/616ceedd54f9bafa1e1529308ba514e9)
+
 ## Project Installation
 
 ### Requirements
