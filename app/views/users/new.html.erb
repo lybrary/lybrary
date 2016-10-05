@@ -1,0 +1,11 @@
+<h1>New User</h1>
+<%= form_for(@user, url: signup_path) do |f| %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :alias %>
+  <%= f.text_field :alias %>
+
+  <%= f.submit "Create my account" %>
+<% end %>

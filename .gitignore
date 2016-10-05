@@ -25,3 +25,6 @@
 
 # Ignore all elastic beanstalk configuration files
 .ebextensions
+
+# OSX Files
+.DS_Store

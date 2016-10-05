@@ -12,12 +12,12 @@ Vagrant.configure(2) do |config|
     v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
 
-  config.vm.hostname = "imagesServer"
+  config.vm.hostname = "team"
   config.vm.network :private_network, ip: "192.168.33.8"
   config.vm.network "forwarded_port", guest: 3306, host: 3307
 
   # Set the name of the VM. See: http://stackoverflow.com/a/17864388/100134
-  config.vm.define :imagesServer do |imagesServer|
+  config.vm.define :team do |team|
   end
 
   # Ansible provisioner.
