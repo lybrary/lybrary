@@ -1,5 +1,7 @@
 # Lybrary
 
+[![Build Status](https://travis-ci.org/lybrary/lybrary.svg?branch=master)](https://travis-ci.org/lybrary/lybrary)
+
 ## 1) Configure environment
 
 * Ruby 2.3.1
