@@ -8,11 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: team_dev
+  database: dev
 
 test:
   <<: *default
   database: test
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: <%= ENV['DB_HOST'] %>
 
 production:
   <<: *default
